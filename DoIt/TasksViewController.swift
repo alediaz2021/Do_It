@@ -12,17 +12,23 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     @IBOutlet weak var tableView: UITableView!
     
-    var tasks : [Tak] = []
-    var selectedIndex = 0
+    var tasks : [Task] = []
     
+ //this function will load once, when app is launch
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        tasks = makeTasks()
+        //tasks = makeTasks()
         
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    //this function will be loaded everytime this view is loaded
+    override func viewWillAppear(_ animated: Bool) {
+        getTask()
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,7 +40,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = UITableViewCell()
         let task = tasks[indexPath.row]
         if task.important {
-             cell.textLabel?.text = "❗️\(task.name)"
+            cell.textLabel?.text = "❗️\(task.name!)"
         } else {
              cell.textLabel?.text = task.name
         }
@@ -44,11 +50,10 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
 //second seque
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let task = tasks[indexPath.row]
-        selectedIndex = indexPath.row
         performSegue(withIdentifier: "selectTaskSeque", sender: task)
     }
     
-    func makeTasks() -> [Tak] {
+    /*func makeTasks() -> [Tak] {
         let task1 = Tak()
         task1.name = "Walk the dog"
         task1.important = false
@@ -62,11 +67,22 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         task3.important = false
   
         return [task1, task2, task3]
-    }
+    }*/
     
     
     @IBAction func plusTapped(_ sender: Any) {
         performSegue(withIdentifier: "addSeque", sender: nil)
+    }
+    
+    func getTask(){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do{
+            tasks = try context.fetch(Task.fetchRequest()) as! [Task]
+            print(tasks)
+        } catch {
+            print("Oops Error")
+        }
+        
     }
     
     /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -76,15 +92,9 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     }*/
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addSeque" {
-            let nextVC : CreateTaskViewController = segue.destination as! CreateTaskViewController
-            nextVC.previousVC = self
-        }
-        
         if segue.identifier == "selectTaskSeque" {
             let nextVC = segue.destination as! CompleteTaskViewController
-            nextVC.task = sender as! Tak
-            nextVC.previousVC = self
+            nextVC.task = sender as! Task
 
         }
         /*let nextVC = segue.destination as! UINavigationController

@@ -16,7 +16,6 @@
 		EAFC04C626351A380042DEEA /* DoIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFC04C426351A380042DEEA /* DoIt.xcdatamodeld */; };
 		EAFC04C826351A3A0042DEEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAFC04C726351A3A0042DEEA /* Assets.xcassets */; };
 		EAFC04CB26351A3A0042DEEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAFC04C926351A3A0042DEEA /* LaunchScreen.storyboard */; };
-		EAFC04D5263524130042DEEA /* Tak.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC04D4263524130042DEEA /* Tak.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +30,6 @@
 		EAFC04C726351A3A0042DEEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAFC04CA26351A3A0042DEEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAFC04CC26351A3A0042DEEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EAFC04D4263524130042DEEA /* Tak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tak.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +67,6 @@
 				EAFC04BF26351A380042DEEA /* TasksViewController.swift */,
 				EA81C13A26366BAC003DEB04 /* CompleteTaskViewController.swift */,
 				EA223A032635B8E4001AA390 /* CreateTaskViewController.swift */,
-				EAFC04D4263524130042DEEA /* Tak.swift */,
 				EAFC04C126351A380042DEEA /* Main.storyboard */,
 				EAFC04C726351A3A0042DEEA /* Assets.xcassets */,
 				EAFC04C926351A3A0042DEEA /* LaunchScreen.storyboard */,
@@ -150,7 +147,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAFC04D5263524130042DEEA /* Tak.swift in Sources */,
 				EAFC04C026351A380042DEEA /* TasksViewController.swift in Sources */,
 				EAFC04C626351A380042DEEA /* DoIt.xcdatamodeld in Sources */,
 				EAFC04BC26351A380042DEEA /* AppDelegate.swift in Sources */,
